@@ -3,7 +3,8 @@
 A production-ready AI tool designed to analyze short-form scripted content (microdramas, web series, OTT shorts). It generates structured storytelling insights including emotional arcs, engagement scoring, actionable improvement suggestions, and cliffhanger detection.
 
 Built as a **100% local, zero-cost, privacy-first** application using Ollama and Qwen3. No API keys required.
-Demo Video - https://drive.google.com/file/d/1ADsTunK-u0n8xYZRZdnAWqExQVPwBFsf/view?usp=drive_link
+
+[Demo Video](https://drive.google.com/file/d/1ADsTunK-u0n8xYZRZdnAWqExQVPwBFsf/view?usp=drive_link)
 ---
 
 ## 🚀 Key Features
