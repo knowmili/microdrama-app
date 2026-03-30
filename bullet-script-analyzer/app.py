@@ -629,28 +629,40 @@ main_tab_analyze, main_tab_compare = st.tabs(["🔍 Analyze Script", "⚔️ Com
 # TAB: SINGLE ANALYSIS
 # ═══════════════════════════════════════════════════════════════════════════════
 with main_tab_analyze:
-    # Sample script selector — dropdown with multiple genre options
-    selected_sample = st.selectbox(
+    # Callback to sync single analysis dropdown → title/script fields
+    def _sync_single_sample():
+        s = SAMPLE_SCRIPTS[st.session_state["single_sample_select"]]
+        st.session_state["single_title"] = s["title"]
+        st.session_state["single_script"] = s["script"]
+
+    sample_keys = list(SAMPLE_SCRIPTS.keys())
+    
+    # Initialize session state for single analysis on first load
+    if "single_title" not in st.session_state:
+        s = SAMPLE_SCRIPTS[sample_keys[0]]
+        st.session_state["single_title"] = s["title"]
+        st.session_state["single_script"] = s["script"]
+
+    # Sample script selector
+    st.selectbox(
         "Choose a sample script or write your own",
-        options=list(SAMPLE_SCRIPTS.keys()),
+        options=sample_keys,
         index=0,
+        key="single_sample_select",
+        on_change=_sync_single_sample,
         help="Pre-built samples demonstrate the analyzer across genres. Select 'Custom Script' to paste your own."
     )
-
-    sample = SAMPLE_SCRIPTS[selected_sample]
 
     col_title, _ = st.columns([2, 1])
     with col_title:
         title = st.text_input(
             "Script Title",
-            value=sample["title"],
             key="single_title",
             placeholder="Enter your script's title"
         )
 
     script_content = st.text_area(
         "Script Content",
-        value=sample["script"],
         height=280,
         key="single_script",
         placeholder="Paste your script here...",
