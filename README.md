@@ -81,12 +81,13 @@ ollama pull qwen3:14b
 pip install -r requirements.txt
 ```
 
-### 4. Launch Desktop App
+### 3. Launch Desktop App
 ```bash
 # Terminal 1: Start inference server
 ollama serve
 
 # Terminal 2: Launch UI
+cd bullet-script-analyzer
 streamlit run app.py
 ```
 Navigate to the provided `localhost:8501` link. The app will auto-detect the best Qwen3 model you pulled.
